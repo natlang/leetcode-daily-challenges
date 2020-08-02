@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+function detectCapitalUse(word) {
+    const allUpperCase = (str) => {
+      for(const s of str) {
+        if(s.toLowerCase() === s) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    const allLowerCase = (str) => {
+      for(const s of str) {
+          if(s.toUpperCase() === s) {
+              return false;
+          }
+      }
+      return true;
+    }
+
+    const matchCondition1 = allUpperCase(word);
+    if(matchCondition1) {
+      return true;
+    }
+
+    const matchCondition2 = allLowerCase(word);
+    if(matchCondition2) {
+      return true;
+    }
+
+    [first, ...rest] = word;
+    const matchCondition3 = (first.toUpperCase() === first) && allLowerCase(rest);
+    if(matchCondition3) {
+      return true;
+    }
+
+    return false;
+  }
+</script>
+</head>
+</html>
